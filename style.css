@@ -992,7 +992,9 @@ a { text-decoration: none; color: inherit; }
 
 .about-right {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
 
 .about-mascot-card {
@@ -1026,6 +1028,60 @@ a { text-decoration: none; color: inherit; }
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* ── About QR Codes ── */
+.about-qrcodes {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.qrcode-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: all var(--transition);
+  width: 130px;
+}
+
+.qrcode-item:hover {
+  border-color: var(--accent-orange);
+  box-shadow: 0 4px 20px rgba(255, 140, 66, 0.08);
+  transform: translateY(-2px);
+}
+
+.qrcode-img {
+  width: 100px;
+  height: 100px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.qrcode-label {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .about-qrcodes {
+    gap: 12px;
+  }
+  .qrcode-item {
+    width: 100px;
+    padding: 12px;
+  }
+  .qrcode-img {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 /* ── Footer ── */

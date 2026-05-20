@@ -1,9 +1,211 @@
 {
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-20",
   "days": [
     {
-      "date": "2026-05-19",
+      "date": "2026-05-20",
       "label": "今天",
+      "icon": "",
+      "projects": [
+        {
+          "rank": 1,
+          "owner": "tinyhumansai",
+          "name": "openhuman",
+          "fullName": "tinyhumansai / openhuman",
+          "org": "Tiny Humans AI",
+          "url": "https://github.com/tinyhumansai/openhuman",
+          "lang": "Rust",
+          "langClass": "rs",
+          "stars": "21,181",
+          "forks": "1,864",
+          "starsToday": "3,973",
+          "description": "Your Personal AI super intelligence —— 桌面级个人 AI 超级智能体：私有、简单、极其强大",
+          "problems": [
+            "<strong>AI 碎片化与隐私焦虑：</strong>ChatGPT、Claude、Cursor 等工具各自为政，且数据全部上传云端。OpenHuman 提供统一的本地桌面 Agent，118+ 第三方集成（Gmail、Notion、GitHub、Slack 等）一键 OAuth 接入，所有数据本地处理。",
+            "<strong>Agent 缺乏连续记忆：</strong>每次新对话都像初次见面。OpenHuman 内置 Memory Tree + Obsidian Wiki——本地 SQLite 存储知识图谱，自动将数据整理为 Markdown 块写入 Obsidian 仓库，Agent 能记住你几周前的对话和偏好。",
+            "<strong>Agent 使用门槛高：</strong>多数 Agent 框架需要配置 API Key、写提示词、管理插件。OpenHuman 是桌面应用——安装后点几下就能用，配有桌面宠物形象、语音交互、Google Meet 参会等开箱即用功能。"
+          ],
+          "usage": [
+            "macOS/Linux 一键安装：<pre><code>curl -fsSL https://raw.githubusercontent.com/tinyhumansai/openhuman/main/scripts/install.sh | bash</code></pre>",
+            "Windows 安装：<pre><code>irm https://raw.githubusercontent.com/tinyhumansai/openhuman/main/scripts/install.ps1 | iex</code></pre>",
+            "或从官网下载 DMG/EXE：<a href=\"https://tinyhumans.ai/openhuman\" style=\"color:#58a6ff\">tinyhumans.ai/openhuman</a>",
+            "启动后通过 OAuth 一键连接 Gmail、GitHub、Notion 等服务，Agent 自动获取上下文。"
+          ],
+          "insights": [
+            "<strong>个人 AI 操作系统：</strong>OpenHuman 证明\"个人 AI 桌面超级助手\"是可行的产品品类——本地优先、隐私优先、桌面优先。可做面向普通用户的订阅制个人 AI 管家，管理邮件、日历、文件、聊天，成为真正的数字分身。",
+            "<strong>企业 AI 桌面工作台：</strong>企业版可统一管理员工的 AI 工作台——集成公司内部工具（Jira、Confluence、内部 API），确保数据不出企业边界，同时提供标准化 AI 能力。对标 Microsoft Copilot 但本地化部署。",
+            "<strong>AI 硬件捆绑：</strong>与 Mac/Windows 设备厂商合作预装，或推出\"AI PC\"概念——买电脑送个人 AI 助手，形成硬件+AI 的差异化竞争。"
+          ],
+          "tags": [
+            "personal-ai",
+            "local-first",
+            "118+ integrations",
+            "memory-tree",
+            "obsidian-wiki",
+            "desktop-agent"
+          ],
+          "count": 3
+        },
+        {
+          "rank": 2,
+          "owner": "HKUDS",
+          "name": "CLI-Anything",
+          "fullName": "HKUDS / CLI-Anything",
+          "org": "HKU DS",
+          "url": "https://github.com/HKUDS/CLI-Anything",
+          "lang": "Python",
+          "langClass": "py",
+          "stars": "37,692",
+          "forks": "3,608",
+          "starsToday": "1,038",
+          "description": "\"Making ALL Software Agent-Native\" —— CLI-Hub：让每一款软件都有 AI Agent 原生命令行接口",
+          "problems": [
+            "<strong>软件不具备 Agent 接口：</strong>AI Agent 要操作现有软件（浏览器、IDE、设计工具等）只能靠 GUI 截图+模拟点击，不稳定又慢。CLI-Anything 为任意软件自动生成 CLI 接口，Agent 通过命令行直接操控。",
+            "<strong>Agent 工具生态碎片化：</strong>每个 Agent 框架有自己的工具定义格式，互不兼容。CLI-Anything 定义统一 CLI-Hub 标准，一次封装到处可用。",
+            "<strong>传统 RPA 太脆弱：</strong>基于 UI 元素的自动化（Selenium、Playwright）一换版就崩。CLI 接口稳定、轻量、可组合，是 Agent 操控软件的正确姿势。"
+          ],
+          "usage": [
+            "安装 CLI 助手：<pre><code>pip install cli-anything</code></pre>",
+            "为目标软件生成 CLI：<pre><code>cli-anything wrap &lt;software-path&gt;</code></pre>",
+            "访问 CLI-Hub 发现已有封装：<a href=\"https://clianything.cc/\" style=\"color:#58a6ff\">clianything.cc</a>",
+            "Agent 通过标准 CLI 接口调用，无需额外适配。"
+          ],
+          "insights": [
+            "<strong>Agent 软件适配中间件：</strong>CLI-Anything 解决了 AI Agent 落地的核心难题——如何让 Agent 操作现有软件。可以做成\"Agent 软件适配器\"平台，企业上传软件，平台自动生成 CLI 接口。",
+            "<strong>CLI-Hub 应用市场：</strong>类似 npm 但面向 Agent 工具——开发者上传 CLI 封装，Agent 开发者下载使用，形成 Agent 工具生态经济。",
+            "<strong>企业软件 Agent 化改造：</strong>为企业遗留系统提供 Agent 化改造服务——旧系统没有 API？CLI-Anything 一键生成 CLI 接口，让 AI Agent 能操作任何老系统。"
+          ],
+          "tags": [
+            "agent-native",
+            "cli-hub",
+            "software-automation",
+            "MCP",
+            "tool-generation",
+            "python"
+          ],
+          "count": 2
+        },
+        {
+          "rank": 3,
+          "owner": "Imbad0202",
+          "name": "academic-research-skills",
+          "fullName": "Imbad0202 / academic-research-skills",
+          "org": "Imbad0202",
+          "url": "https://github.com/Imbad0202/academic-research-skills",
+          "lang": "Python",
+          "langClass": "py",
+          "stars": "14,107",
+          "forks": "1,333",
+          "starsToday": "3,164",
+          "description": "Academic Research Skills for Claude Code: research → write → review → revise → finalize —— 让 AI Agent 成为学术研究助手",
+          "problems": [
+            "<strong>AI 不懂学术写作规范：</strong>ChatGPT/Claude 生成的学术内容缺乏规范的引用格式、文献综述结构、方法论框架。Academic Research Skills 为 Agent 注入完整的学术研究方法论。",
+            "<strong>文献调研效率低：</strong>研究人员花大量时间搜索、筛选、阅读文献。Agent 按照标准化学术流程：搜索 → 筛选 → 精读 → 综述，自动完成文献调研。",
+            "<strong>论文写作到发表的断层：</strong>写好论文只是第一步——选刊、格式排版、回复审稿意见等环节同样繁琐。技能覆盖 research → write → review → revise → finalize 全流程。"
+          ],
+          "usage": [
+            "Clone 技能库：<pre><code>git clone https://github.com/Imbad0202/academic-research-skills</code></pre>",
+            "复制技能到 Claude Code 技能目录：<pre><code>cp -r academic-research-skills/* .claude/skills/</code></pre>",
+            "在 Claude Code 中使用研究技能：<code>/academic-research \"量子计算的最新进展\"</code>",
+            "Agent 自动执行：文献搜索 → 摘要生成 → 综述撰写 → 引用格式化 → 多轮修订。"
+          ],
+          "insights": [
+            "<strong>AI 学术写作 SaaS：</strong>面向研究生/学者的 AI 学术助手——输入研究主题，输出完整的文献综述或论文初稿，按论文数量订阅。",
+            "<strong>期刊投稿自动化：</strong>不同期刊有不同格式要求、参考文献风格、字数限制。AI Agent 自动适配目标期刊格式，一键排版。",
+            "<strong>科研效率评估平台：</strong>通过 Agent 辅助研究节省的时间/提升的质量做量化分析——为高校/研究所提供科研效率提升方案。"
+          ],
+          "tags": [
+            "academic-research",
+            "claude-code",
+            "literature-review",
+            "paper-writing",
+            "research-workflow",
+            "education"
+          ],
+          "count": 2
+        },
+        {
+          "rank": 4,
+          "owner": "obra",
+          "name": "superpowers",
+          "fullName": "obra / superpowers",
+          "org": "obra",
+          "url": "https://github.com/obra/superpowers",
+          "lang": "Shell",
+          "langClass": "sh",
+          "stars": "198,356",
+          "forks": "17,698",
+          "starsToday": "1,623",
+          "description": "An agentic skills framework & software development methodology that works —— 全栈 AI 智能体技能框架与开发方法论",
+          "problems": [
+            "<strong>Agent 技能文件没有标准：</strong>每个人写 CLAUDE.md / CURSOR.md 的方式各不相同，质量和格式参差不齐。Superpowers 定义了标准化的技能文件格式和开发方法论。",
+            "<strong>AI 编程缺少系统方法论：</strong>使用 Cursor/Claude Code 时团队缺乏统一的方法论——有人习惯问问题、有人直接写代码。Superpowers 提供从需求分析到代码交付的全套方法论和技能文件。",
+            "<strong>Agent 协作混乱：</strong>多 Agent 团队（前端 Agent、后端 Agent、测试 Agent）之间缺乏协调框架。Superpowers 内置 Multi-Agent 编排能力。"
+          ],
+          "usage": [
+            "安装 Superpowers CLI：<pre><code>npx @agentic/superpowers</code></pre>",
+            "初始化项目技能：<pre><code>superpowers init</code></pre>",
+            "浏览可用技能库：<pre><code>superpowers list</code></pre>",
+            "安装特定技能到项目：<pre><code>superpowers install react-component</code></pre>"
+          ],
+          "insights": [
+            "<strong>Agent 开发方法论咨询：</strong>198K star 证明了 Superpowers 是当前最流行的 Agent 开发方法论。可以做成企业培训+咨询产品——\"如何用 Superpowers 方法论构建 AI 原生开发团队\"。",
+            "<strong>技能文件模板市场：</strong>像 GitHub Marketplace 一样交易 Agent 技能文件——前端技能包、后端技能包、DevOps 技能包，每个 $5-50。",
+            "<strong>团队 Agent 治理平台：</strong>企业版统一管理所有开发者的技能文件——强制更新、安全审查、使用统计，形成企业 AI 开发治理标准。"
+          ],
+          "tags": [
+            "agentic-framework",
+            "skills-file",
+            "multi-agent",
+            "development-methodology",
+            "claude-code",
+            "cursor"
+          ],
+          "count": 2
+        },
+        {
+          "rank": 5,
+          "owner": "rohitg00",
+          "name": "agentmemory",
+          "fullName": "rohitg00 / agentmemory",
+          "org": "rohitg00",
+          "url": "https://github.com/rohitg00/agentmemory",
+          "lang": "TypeScript",
+          "langClass": "ts",
+          "stars": "14,133",
+          "forks": "1,179",
+          "starsToday": "1,609",
+          "description": "#1 Persistent memory for AI coding agents based on real-world benchmarks —— AI 编程 Agent 专属持久化记忆引擎",
+          "problems": [
+            "<strong>AI Agent 每次对话都失忆：</strong>Coding Agent 每次新对话都像初次见面——不记得项目配置、代码约定、你偏好的测试框架。AgentMemory 让 Agent 记住跨会话的项目上下文。",
+            "<strong>记忆存储碎片化：</strong>有的 Agent 用文件、有的用向量数据库、有的用 SQLite，互不兼容。AgentMemory 提供统一记忆层——基于真实场景基准测试的 #1 记忆方案。",
+            "<strong>记忆太贵太重：</strong>向量数据库需要 GPU、Embedding 服务、额外基础设施。AgentMemory 轻量级设计，直接作为 MCP 插件运行，零额外基础设施。"
+          ],
+          "usage": [
+            "安装 AgentMemory CLI：<pre><code>npm install -g agentmemory</code></pre>",
+            "在项目中初始化：<pre><code>agentmemory init</code></pre>",
+            "作为 MCP 插件添加到 Claude Code / Cursor：<code>mcp add agentmemory</code>",
+            "Agent 自动将项目知识保存到记忆库，跨会话自动召回。"
+          ],
+          "insights": [
+            "<strong>Agent 记忆即服务：</strong>14K star 证明记忆是 Agent 的刚需。托管的记忆云服务——让任何 AI Agent 拥有跨会话记忆能力，按记忆量/Agent 数订阅收费。",
+            "<strong>企业知识大脑：</strong>多 Agent 共享记忆空间——前端 Agent 和后端 Agent 共享项目上下文，形成统一的企业知识图谱。",
+            "<strong>IDE 记忆插件：</strong>每个 IDE 都安装 AgentMemory 插件——VS Code、JetBrains、Cursor 之间的 Agent 共享同一套项目记忆。"
+          ],
+          "tags": [
+            "persistent-memory",
+            "knowledge-graph",
+            "MCP-native",
+            "token-efficient",
+            "coding-agent",
+            "cross-session"
+          ],
+          "count": 1
+        }
+      ]
+    },
+    {
+      "date": "2026-05-19",
+      "label": "昨天",
       "icon": "",
       "projects": [
         {
@@ -205,7 +407,7 @@
     },
     {
       "date": "2026-05-18",
-      "label": "昨天",
+      "label": "前天",
       "icon": "",
       "projects": [
         {
@@ -860,7 +1062,7 @@
           ],
           "usage": [
             "<pre><code>npm install -g @agent-tars/cli</code></pre>",
-            "<pre><code>agent-tars config set OPENAI_API_KEY=sk-xxx</code></pre>",
+            "<pre><code>agent-tars config set OPENAI_API_KEY=sk-xxx...e>",
             "<pre><code>agent-tars start</code></pre>"
           ],
           "insights": [

@@ -1030,58 +1030,58 @@ a { text-decoration: none; color: inherit; }
   background-clip: text;
 }
 
-/* ── About QR Codes ── */
-.about-qrcodes {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
+/* ── QR Popup on Hover ── */
+.qr-link {
+  position: relative;
+  cursor: pointer;
 }
 
-.qrcode-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding: 16px;
+.qr-popup {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  transition: all var(--transition);
+  padding: 10px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 100;
+}
+
+.qr-popup img {
   width: 130px;
-}
-
-.qrcode-item:hover {
-  border-color: var(--accent-orange);
-  box-shadow: 0 4px 20px rgba(255, 140, 66, 0.08);
-  transform: translateY(-2px);
-}
-
-.qrcode-img {
-  width: 100px;
-  height: 100px;
+  height: 130px;
   border-radius: var(--radius-sm);
+  display: block;
   object-fit: cover;
 }
 
-.qrcode-label {
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  font-weight: 500;
+.qr-popup::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: var(--border);
 }
 
-@media (max-width: 768px) {
-  .about-qrcodes {
-    gap: 12px;
-  }
-  .qrcode-item {
-    width: 100px;
-    padding: 12px;
-  }
-  .qrcode-img {
-    width: 80px;
-    height: 80px;
-  }
+.qr-link:hover .qr-popup {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  pointer-events: auto;
+}
+
+/* Touch support: tap to toggle */
+.qr-link:active .qr-popup,
+.qr-link:focus .qr-popup {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  pointer-events: auto;
 }
 
 /* ── Footer ── */

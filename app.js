@@ -96,16 +96,19 @@ function renderTimeline() {
   var html = '<div class="timeline">';
 
   siteData.days.forEach(function(day, di) {
+    var isFirst = di === 0;
     html += '<div class="day-group reveal" style="transition-delay:' + (di * 0.05) + 's">';
     html += '<div class="day-node">';
     html += '<div class="day-dot"></div>';
     html += '<span class="day-label">' + day.label + '</span>';
     html += '<span class="day-date">' + day.date + '</span>';
     html += '</div>';
+    html += '<div class="day-body' + (isFirst ? '' : ' collapsed') + '">';
     html += '<div class="day-projects">';
 
     day.projects.forEach(function(p) {
       var langClass = langMap[p.lang] || p.lang.toLowerCase();
+      var cardExtra = isFirst ? '' : ' dimmed';
 
       // Problems
       var problemsHtml = '<ul>';
@@ -122,7 +125,7 @@ function renderTimeline() {
       if (p.insights) p.insights.forEach(function(x) { insightsHtml += '<li>' + x + '</li>'; });
       insightsHtml += '</ul>';
 
-      html += '<div class="project-card reveal" data-rank="' + p.rank + '" style="transition-delay:' + (di * 0.05 + 0.05) + 's">';
+      html += '<div class="project-card reveal' + cardExtra + '" data-rank="' + p.rank + '" style="transition-delay:' + (di * 0.05 + 0.05) + 's">';
       html += '<div class="rank-ribbon"></div>';
       html += '<div class="pc-header">';
       html += '<span class="rank-num">#' + p.rank + '</span>';
@@ -152,7 +155,13 @@ function renderTimeline() {
       html += '</div>';
     });
 
-    html += '</div></div>';
+    html += '</div>'; // day-projects
+    html += '<div class="day-fade"></div>';
+    html += '</div>'; // day-body
+    if (!isFirst) {
+      html += '<button class="day-toggle" onclick="toggleDay(this)"><span class="toggle-icon">▾</span> 展开查看 (' + day.label + ' ' + day.date + ')</button>';
+    }
+    html += '</div>'; // day-group
   });
 
   html += '</div>';
@@ -264,32 +273,53 @@ function initNavbar() {
   });
 }
 
-// ── Hero Particle Animation ───────────────────
+// ── Collapsible Day Toggle ────────────────────
 
-function initHeroParticles() {
-  var canvas = document.getElementById('heroCanvas');
+function toggleDay(btn) {
+  var dayBody = btn.parentNode.querySelector('.day-body');
+  if (!dayBody) return;
+
+  var isOpening = dayBody.classList.contains('collapsed');
+  var icon = btn.querySelector('.toggle-icon');
+
+  if (isOpening) {
+    // Calculate full height
+    dayBody.classList.remove('collapsed');
+    dayBody.style.maxHeight = dayBody.scrollHeight + 'px';
+    dayBody.style.maxHeight = dayBody.scrollHeight + 'px'; // force reflow
+    icon.classList.add('open');
+    btn.innerHTML = '<span class="toggle-icon open">▾</span> 收起 (' + btn.textContent.replace(/.*\(/, '(').replace(/▾/g, '').trim() + ')';
+  } else {
+    dayBody.classList.add('collapsed');
+    dayBody.style.maxHeight = '220px';
+    icon.classList.remove('open');
+    btn.innerHTML = '<span class="toggle-icon">▾</span> 展开查看 (' + btn.textContent.replace(/.*\(/, '(').replace(/▾/g, '').trim() + ')';
+  }
+}
+
+// ── Full-Background Particle Animation ────────
+
+function initBgParticles() {
+  var canvas = document.getElementById('bgCanvas');
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
   var particles = [];
   var mouse = { x: -9999, y: -9999 };
-  var heroSection = document.getElementById('home');
 
-  var colors = ['#FF8C42', '#FFB347', '#00D9FF', '#A78BFA'];
+  var colors = ['#FF8C42', '#FFB347', '#00D9FF', '#A78BFA', '#FF6B35'];
 
   function resize() {
-    canvas.width = heroSection.offsetWidth;
-    canvas.height = heroSection.offsetHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
   }
   resize();
   window.addEventListener('resize', resize);
 
-  // Mouse tracking
-  heroSection.addEventListener('mousemove', function(e) {
-    var rect = canvas.getBoundingClientRect();
-    mouse.x = e.clientX - rect.left;
-    mouse.y = e.clientY - rect.top;
+  document.addEventListener('mousemove', function(e) {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
   });
-  heroSection.addEventListener('mouseleave', function() {
+  document.addEventListener('mouseleave', function() {
     mouse.x = -9999;
     mouse.y = -9999;
   });
@@ -298,16 +328,17 @@ function initHeroParticles() {
     return {
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.6,
-      vy: (Math.random() - 0.5) * 0.6,
-      size: Math.random() * 2.5 + 1,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      size: Math.random() * 2.8 + 0.8,
       color: colors[Math.floor(Math.random() * colors.length)],
-      opacity: Math.random() * 0.5 + 0.2,
+      opacity: Math.random() * 0.4 + 0.15,
       pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.02 + 0.01,
     };
   }
 
-  var count = Math.min(Math.floor(canvas.width * canvas.height / 12000), 100);
+  var count = Math.min(Math.floor(canvas.width * canvas.height / 8000), 150);
   for (var i = 0; i < count; i++) {
     particles.push(createParticle());
   }
@@ -315,61 +346,57 @@ function initHeroParticles() {
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Update particles
+    // Update & draw particles
     particles.forEach(function(p) {
       p.x += p.vx;
       p.y += p.vy;
-      p.pulse += 0.02;
+      p.pulse += p.pulseSpeed;
 
-      // Wrap around
-      if (p.x < -10) p.x = canvas.width + 10;
-      if (p.x > canvas.width + 10) p.x = -10;
-      if (p.y < -10) p.y = canvas.height + 10;
-      if (p.y > canvas.height + 10) p.y = -10;
+      if (p.x < -15) p.x = canvas.width + 15;
+      if (p.x > canvas.width + 15) p.x = -15;
+      if (p.y < -15) p.y = canvas.height + 15;
+      if (p.y > canvas.height + 15) p.y = -15;
 
-      // Mouse interaction - gentle attraction
+      // Mouse interaction
       var dx = mouse.x - p.x;
       var dy = mouse.y - p.y;
       var dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 200) {
-        var force = (200 - dist) / 200 * 0.02;
+      if (dist < 250) {
+        var force = (250 - dist) / 250 * 0.015;
         p.vx += dx * force;
         p.vy += dy * force;
-        // Limit speed
         var speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
-        if (speed > 1.5) {
-          p.vx = (p.vx / speed) * 1.5;
-          p.vy = (p.vy / speed) * 1.5;
+        if (speed > 2) {
+          p.vx = (p.vx / speed) * 2;
+          p.vy = (p.vy / speed) * 2;
         }
       }
 
-      // Slight damping
-      p.vx *= 0.99;
-      p.vy *= 0.99;
+      p.vx *= 0.995;
+      p.vy *= 0.995;
 
-      // Draw particle
-      var currentOpacity = p.opacity + Math.sin(p.pulse) * 0.15;
+      var currentOpacity = p.opacity + Math.sin(p.pulse) * 0.12;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
       ctx.fillStyle = p.color;
-      ctx.globalAlpha = Math.max(0.05, Math.min(0.8, currentOpacity));
+      ctx.globalAlpha = Math.max(0.03, Math.min(0.7, currentOpacity));
       ctx.fill();
     });
 
-    // Draw connections between nearby particles
+    // Connections
     particles.forEach(function(a, i) {
       particles.forEach(function(b, j) {
         if (j <= i) return;
         var dx = a.x - b.x;
         var dy = a.y - b.y;
         var dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
+        if (dist < 140) {
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
-          ctx.strokeStyle = colors[0];
-          ctx.globalAlpha = (1 - dist / 120) * 0.12;
-          ctx.lineWidth = 0.5;
+          ctx.strokeStyle = '#FF8C42';
+          ctx.globalAlpha = (1 - dist / 140) * 0.08;
+          ctx.lineWidth = 0.4;
           ctx.stroke();
         }
       });
@@ -398,7 +425,7 @@ function initFilter() {
 // ── Init ───────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', function() {
-  initHeroParticles();
+  initBgParticles();
   initNavbar();
   renderTimeline();
   renderArticles();

@@ -197,6 +197,7 @@ a { text-decoration: none; color: inherit; }
 /* ── Hero ── */
 .hero {
   position: relative;
+  z-index: 1;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -428,13 +429,14 @@ a { text-decoration: none; color: inherit; }
   opacity: 0;
 }
 
-#heroCanvas {
-  position: absolute;
+#bgCanvas {
+  position: fixed;
   inset: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
+  opacity: 0.7;
 }
 
 .scroll-line {
@@ -496,8 +498,8 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ── Sections ── */
-.section { padding: 90px 0; }
-.section-alt { background: var(--bg-secondary); }
+.section { padding: 90px 0; position: relative; z-index: 1; }
+.section-alt { background: var(--bg-secondary); position: relative; z-index: 1; }
 
 .section-header {
   text-align: center;
@@ -595,6 +597,81 @@ a { text-decoration: none; color: inherit; }
   margin-left: 0;
 }
 
+/* ── Collapsible Days ── */
+.day-body {
+  overflow: hidden;
+  transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+  position: relative;
+}
+
+.day-body:not(.collapsed) {
+  max-height: none;
+}
+
+.day-body.collapsed {
+  max-height: 220px;
+}
+
+.day-body.collapsed .day-projects {
+  opacity: 0.3;
+  transition: opacity 0.5s ease;
+}
+
+.day-body:not(.collapsed) .day-projects {
+  opacity: 1;
+}
+
+.day-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: linear-gradient(to bottom, transparent, var(--bg-primary));
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.day-body.collapsed .day-fade {
+  opacity: 1;
+}
+
+.day-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 20px;
+  margin-top: 0;
+  background: none;
+  border: 1px dashed var(--border);
+  border-radius: 0 0 var(--radius) var(--radius);
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.day-toggle:hover {
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
+  background: var(--accent-orange-dim);
+}
+
+.day-toggle .toggle-icon {
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 0.8rem;
+}
+
+.day-toggle .toggle-icon.open {
+  transform: rotate(180deg);
+}
+
 .project-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -623,6 +700,11 @@ a { text-decoration: none; color: inherit; }
 .project-card[data-rank="3"] .rank-ribbon { background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple)); }
 .project-card[data-rank="4"] .rank-ribbon { background: linear-gradient(180deg, var(--accent-purple), var(--accent-cyan)); }
 .project-card[data-rank="5"] .rank-ribbon { background: linear-gradient(180deg, #85C1E9, var(--accent-gold)); }
+
+.project-card.dimmed {
+  opacity: 0.4;
+  filter: saturate(0.3);
+}
 
 .pc-header {
   display: flex;
@@ -1152,6 +1234,8 @@ a { text-decoration: none; color: inherit; }
 .footer {
   border-top: 1px solid var(--border);
   padding: 32px 0;
+  position: relative;
+  z-index: 1;
 }
 
 .footer-inner {

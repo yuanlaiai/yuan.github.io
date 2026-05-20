@@ -1053,11 +1053,10 @@ a { text-decoration: none; color: inherit; }
 }
 
 .qr-popup img {
-  width: 130px;
-  height: 130px;
+  max-width: 160px;
+  height: auto;
   border-radius: var(--radius-sm);
   display: block;
-  object-fit: cover;
 }
 
 .qr-popup::after {

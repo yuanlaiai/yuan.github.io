@@ -46,7 +46,7 @@ var siteData = {
             "obsidian-wiki",
             "desktop-agent"
           ],
-          "count": 3
+          "count": 4
         },
         {
           "rank": 2,
@@ -202,7 +202,7 @@ var siteData = {
             "coding-agent",
             "cross-session"
           ],
-          "count": 1
+          "count": 3
         }
       ]
     },

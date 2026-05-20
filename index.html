@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>猿来AI · 让AI很简单</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KH2VY5FWFK"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-KH2VY5FWFK');
 </script>
+
 <!-- Baidu Analytics -->
 <script>
 var _hmt = _hmt || [];
@@ -20,339 +28,207 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> GitHub AI 热点项目 · 时间线</title>
-<style>
-  :root {
-    --bg: #0d1117;
-    --card-bg: #161b22;
-    --border: #30363d;
-    --text: #c9d1d9;
-    --muted: #8b949e;
-    --accent: #58a6ff;
-    --green: #3fb950;
-    --orange: #d2991d;
-    --purple: #a371f7;
-    --red: #f85149;
-    --cyan: #39d2c0;
-    --line: #21262d;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-
-  .hero {
-    background: linear-gradient(135deg, #0a0e27 0%, #0d1117 40%, #0a1628 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 48px 20px 40px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; top:-50%; left:-50%;
-    width:200%; height:200%;
-    background: radial-gradient(circle at 25% 50%, rgba(88,166,255,0.06) 0%, transparent 50%),
-                radial-gradient(circle at 75% 50%, rgba(163,113,247,0.05) 0%, transparent 50%),
-                radial-gradient(circle at 50% 30%, rgba(57,210,192,0.05) 0%, transparent 40%);
-    animation: heroPulse 12s ease-in-out infinite;
-  }
-  @keyframes heroPulse {
-    0%,100% { opacity:0.5; }
-    50% { opacity:1; }
-  }
-  .hero h1 {
-    font-size: clamp(1.8rem, 4.5vw, 2.6rem);
-    font-weight:800;
-    background: linear-gradient(135deg, #58a6ff, #a371f7, #39d2c0);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-    position:relative; z-index:1;
-  }
-  .hero .sub {
-    margin-top:10px; color:var(--muted); font-size:1rem; position:relative; z-index:1;
-  }
-  .hero .stats-row {
-    display:flex; gap:20px; justify-content:center; flex-wrap:wrap;
-    margin-top:16px; position:relative; z-index:1;
-  }
-  .hero .stat-mini {
-    padding:6px 14px; background:var(--card-bg); border:1px solid var(--border);
-    border-radius:20px; font-size:0.8rem; color:var(--muted);
-  }
-  .hero .stat-mini strong { color:var(--accent); }
-
-  /* ========== TIMELINE ========== */
-  .timeline {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 40px 20px 80px;
-    position: relative;
-  }
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 44px; top:0; bottom:0;
-    width: 3px;
-    background: linear-gradient(180deg,
-      transparent 0%,
-      var(--line) 5%,
-      var(--border) 50%,
-      var(--line) 95%,
-      transparent 100%);
-  }
-  @media (max-width: 640px) {
-    .timeline::before { left: 24px; }
-    .timeline { padding: 28px 12px 60px; }
-  }
-
-  /* Date Node */
-  .day-group {
-    position: relative;
-    margin-bottom: 52px;
-  }
-  .day-node {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 24px;
-    padding-left: 44px;
-  }
-  @media (max-width: 640px) {
-    .day-node { padding-left: 24px; }
-  }
-  .day-node::before {
-    content: '';
-    position: absolute;
-    left: 35px; top: 50%; transform: translateY(-50%);
-    width: 21px; height: 21px;
-    background: linear-gradient(135deg, var(--accent), var(--purple));
-    border-radius: 50%;
-    border: 3px solid var(--bg);
-    box-shadow: 0 0 12px rgba(88,166,255,0.3);
-    z-index: 2;
-  }
-  @media (max-width: 640px) {
-    .day-node::before { left: 15px; }
-  }
-  .day-node .day-icon { font-size: 1.4rem; }
-  .day-node .day-title {
-    font-size: 1.15rem; font-weight:700; color:var(--text);
-  }
-  .day-node .day-date {
-    font-size:0.82rem; color:var(--muted); margin-left:auto;
-    padding:4px 14px; border:1px solid var(--border); border-radius:16px;
-    white-space:nowrap;
-  }
-
-  /* Project Cards inside a day */
-  .day-projects {
-    margin-left: 44px;
-    display: flex; flex-direction: column; gap: 16px;
-  }
-  @media (max-width: 640px) {
-    .day-projects { margin-left: 24px; }
-  }
-  .project-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 22px 24px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .project-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 4px 20px rgba(88,166,255,0.08);
-  }
-  .project-card .rank-ribbon {
-    position: absolute; top:0; left:0;
-    width: 4px; height: 100%;
-    border-radius: 12px 0 0 12px;
-  }
-  .project-card[data-rank="1"] .rank-ribbon { background: linear-gradient(180deg, #f85149, #d2991d); }
-  .project-card[data-rank="2"] .rank-ribbon { background: linear-gradient(180deg, #d2991d, #3fb950); }
-  .project-card[data-rank="3"] .rank-ribbon { background: linear-gradient(180deg, #58a6ff, #a371f7); }
-  .project-card[data-rank="4"] .rank-ribbon { background: linear-gradient(180deg, #a371f7, #39d2c0); }
-  .project-card[data-rank="5"] .rank-ribbon { background: linear-gradient(180deg, #39d2c0, #58a6ff); }
-
-  .pc-header {
-    display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px;
-    padding-left: 4px;
-  }
-  .pc-header .icon { font-size:1.3rem; }
-  .pc-header .repo-name {
-    font-size:1.1rem; font-weight:700; color:var(--accent); text-decoration:none;
-  }
-  .pc-header .repo-name:hover { text-decoration:underline; }
-  .pc-header .org { color:var(--muted); font-size:0.85rem; }
-  .pc-meta {
-    display:flex; gap:14px; flex-wrap:wrap; font-size:0.8rem; color:var(--muted);
-    padding-left:4px; margin-bottom:12px;
-  }
-  .pc-meta .stars-today { color:var(--orange); font-weight:600; }
-  .pc-meta .count-badge { color:var(--cyan); font-weight:600; }
-  .lang-dot { width:9px; height:9px; border-radius:50%; display:inline-block; margin-right:3px; }
-  .lang-dot.ts { background:#3178c6; } .lang-dot.py { background:#3572A5; }
-  .lang-dot.js { background:#f1e05a; } .lang-dot.rs { background:#dea584; }
-  .lang-dot.sh { background:#89e051; } .lang-dot.go { background:#00ADD8; }
-
-  .pc-desc {
-    font-size:0.9rem; color:var(--text); margin-bottom:14px;
-    padding:10px 14px; background:rgba(88,166,255,0.04);
-    border-left:3px solid var(--accent); border-radius:0 6px 6px 0;
-    margin-left:4px;
-  }
-  .section-label {
-    font-size:0.72rem; font-weight:700; text-transform:uppercase;
-    letter-spacing:0.05em; color:var(--purple);
-    margin:12px 0 4px; padding-left:4px;
-  }
-  .section-label.usage { color:var(--green); }
-  .section-label.insight { color:var(--orange); }
-  .section-content { font-size:0.87rem; color:var(--text); padding-left:4px; }
-  .section-content ul, .section-content ol { padding-left:18px; }
-  .section-content li { margin-bottom:4px; }
-  .section-content pre {
-    background:#0d1117; border:1px solid var(--border); border-radius:8px;
-    padding:10px 14px; margin:8px 0; overflow-x:auto;
-    font-size:0.8rem; line-height:1.45;
-  }
-  .section-content code {
-    font-family:'SF Mono','Fira Code','Consolas',monospace;
-    color:var(--green);
-  }
-
-  .tags {
-    display:flex; gap:6px; flex-wrap:wrap; margin-top:12px; padding-left:4px;
-  }
-  .tag {
-    font-size:0.7rem; padding:2px 9px; border-radius:10px;
-    background:rgba(88,166,255,0.08); color:var(--accent);
-    border:1px solid rgba(88,166,255,0.15);
-  }
-
-  .footer {
-    text-align:center; padding:30px;
-    color:var(--muted); font-size:0.8rem;
-    border-top:1px solid var(--border);
-  }
-  .footer a { color:var(--accent); text-decoration:none; }
-</style>
 </head>
 <body>
 
-<div class="hero">
-  <h1> GitHub AI 热点项目 · 时间线</h1>
-  <p class="sub">每日精选 5 个最受关注的 AI 开源项目：问题解析 + 快速上手 + 产品价值思路</p>
-  <div class="stats-row">
-    <div class="stat-mini"> 每日更新</div>
-    <div class="stat-mini"> 数据来源 <strong>GitHub Trending</strong></div>
-    <div class="stat-mini"> 累计收录 <strong id="dayCount">-</strong> 天</div>
+<!-- Navigation -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <img src="assets/images/xiaoyuan.png" alt="猿来AI" class="nav-mascot">
+      <span class="nav-brand">猿来AI</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#home" class="nav-link active">首页</a>
+      <a href="#trending" class="nav-link">AI热点</a>
+      <a href="#articles" class="nav-link">文章</a>
+      <a href="#projects" class="nav-link">项目</a>
+      <a href="#about" class="nav-link">关于</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="菜单">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-glow glow-1"></div>
+  <div class="hero-glow glow-2"></div>
+  <div class="hero-content">
+    <div class="hero-mascot-wrapper fade-in" style="animation-delay:0.1s">
+      <img src="assets/images/xiaoyuan.png" alt="猿来AI" class="hero-mascot" id="heroMascot">
+    </div>
+    <div class="hero-badge fade-in" style="animation-delay:0.2s">
+      <span class="badge-dot"></span>
+      <span>🐒 你的互联网AI嘴替</span>
+    </div>
+    <h1 class="hero-title fade-in" style="animation-delay:0.3s">
+      <span class="title-line">你好，我是</span>
+      <span class="title-name gradient-text">猿来AI</span>
+    </h1>
+    <p class="hero-desc fade-in" style="animation-delay:0.4s">
+      一只想让人人秒懂 <span class="highlight">AI</span> 的猿<br>
+      跟我来，<span class="highlight">AI</span> 很简单~
+    </p>
+    <div class="hero-tags fade-in" style="animation-delay:0.5s">
+      <span class="hero-tag">🤖 AI科普</span>
+      <span class="hero-tag">⚡ AI工具</span>
+      <span class="hero-tag">🧠 技术解读</span>
+      <span class="hero-tag">🚀 效率提升</span>
+    </div>
+    <div class="hero-cta fade-in" style="animation-delay:0.6s">
+      <a href="#trending" class="btn-primary">🔥 今日AI热点 →</a>
+      <a href="#about" class="btn-ghost">关于我</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>向下滚动</span>
+  </div>
+</section>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-num">50+</span>
+      <span class="stat-label">AI解读文章</span>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat-item">
+      <span class="stat-num">6天</span>
+      <span class="stat-label">连续追踪热点</span>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat-item">
+      <span class="stat-num">30+</span>
+      <span class="stat-label">AI项目挖掘</span>
+    </div>
+    <div class="stat-sep"></div>
+    <div class="stat-item">
+      <span class="stat-num">∞</span>
+      <span class="stat-label">拉满的好奇心</span>
+    </div>
   </div>
 </div>
 
-<div class="timeline" id="timeline"></div>
+<!-- AI Hot Trends Section -->
+<section id="trending" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">// 每日追踪</div>
+      <h2 class="section-title">🔥 GitHub AI 热点</h2>
+      <p class="section-subtitle">每天精选 GitHub Trending 上最值得关注的 AI 项目，帮你跟上 AI 时代</p>
+    </div>
+    <div id="trendingTimeline">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
 
-<div class="footer">
-  <p> 数据来源：<a href="https://github.com/trending" target="_blank">GitHub Trending</a> · 最后更新：<span id="lastUpdated">-</span></p>
-  <p style="margin-top:6px;">Built with  by Hermes Agent</p>
-</div>
+<!-- Articles Section -->
+<section id="articles" class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">// 知识分享</div>
+      <h2 class="section-title">📝 技术文章</h2>
+      <p class="section-subtitle">让AI从黑盒变成你的得力助手</p>
+    </div>
+    <div class="filter-tags" id="filterTags">
+      <button class="filter-btn active" data-filter="all">全部</button>
+      <button class="filter-btn" data-filter="React">React</button>
+      <button class="filter-btn" data-filter="Backend">Backend</button>
+      <button class="filter-btn" data-filter="DevOps">DevOps</button>
+      <button class="filter-btn" data-filter="前端工程">前端工程</button>
+      <button class="filter-btn" data-filter="性能优化">性能优化</button>
+    </div>
+    <div class="articles-grid" id="articlesGrid">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">// 开源作品</div>
+      <h2 class="section-title">💻 精选项目</h2>
+      <p class="section-subtitle">用代码参与 AI 时代</p>
+    </div>
+    <div class="projects-grid" id="projectsGrid">
+      <!-- Rendered by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section section-alt">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-left">
+        <div class="section-label">// 关于我</div>
+        <h2 class="section-title">猿来AI</h2>
+        <p class="about-role gradient-text">互联网AI嘴替 · 科普博主</p>
+        <p class="about-desc">
+          🐒 一只想让人人秒懂AI的猿。我相信 AI 不是少数人的玩具，而是每个人都能用的工具。
+        </p>
+        <p class="about-desc">
+          每天追踪 GitHub 上最火的 AI 项目，用最通俗的语言告诉你：<strong>这是什么？能干什么？怎么用？</strong>
+        </p>
+        <div class="about-tags">
+          <span class="about-tag">🧠 AI科普</span>
+          <span class="about-tag">🤖 提示词工程</span>
+          <span class="about-tag">⚡ AI工具测评</span>
+          <span class="about-tag">🔧 开源贡献</span>
+          <span class="about-tag">📊 效率提升</span>
+          <span class="about-tag">🚀 技术趋势</span>
+        </div>
+        <div class="about-social">
+          <a href="https://github.com/yuanlaiai" class="social-link" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="mailto:hi@yuanlai-ai.com" class="social-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Email
+          </a>
+        </div>
+      </div>
+      <div class="about-right">
+        <div class="about-mascot-card">
+          <img src="assets/images/xiaoyuan.png" alt="猿来AI" class="about-mascot">
+          <div class="about-quote">
+            "AI 很简单，跟我来"
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/images/xiaoyuan.png" alt="" class="footer-mascot">
+        <span>猿来AI</span>
+      </div>
+      <p class="footer-copy">🐒 一只想让人人秒懂AI的猿 · © 2026</p>
+      <div class="footer-links">
+        <a href="#home">首页</a>
+        <a href="#trending">AI热点</a>
+        <a href="#articles">文章</a>
+        <a href="#about">关于</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
 <script src="data.js?v=20260520"></script>
-<script>
-(function() {
-  var data = siteData;
-  document.getElementById('dayCount').textContent = data.days.length;
-  document.getElementById('lastUpdated').textContent = data.lastUpdated;
-
-  var timeline = document.getElementById('timeline');
-
-  function fmtDate(dateStr) {
-    var d = new Date(dateStr);
-    return d.getFullYear() + '\u5e74' + (d.getMonth()+1) + '\u6708' + d.getDate() + '\u65e5';
-  }
-
-  var emojis = ['', '', '', '', '', '', ''];
-
-  data.days.forEach(function(day, di) {
-    var group = document.createElement('div');
-    group.className = 'day-group';
-    group.innerHTML =
-      '<div class="day-node">' +
-        '<span class="day-icon">' + (emojis[di % emojis.length] || '') + '</span>' +
-        '<span class="day-title">' + fmtDate(day.date) + '</span>' +
-        '<span class="day-date">' + day.label + '</span>' +
-      '</div>' +
-      '<div class="day-projects" id="proj-' + di + '"></div>';
-    timeline.appendChild(group);
-
-    var container = document.getElementById('proj-' + di);
-
-    day.projects.forEach(function(p) {
-      var card = document.createElement('div');
-      card.className = 'project-card';
-      card.setAttribute('data-rank', p.rank);
-
-      var problemsHtml = '<ul>';
-      p.problems.forEach(function(x) { problemsHtml += '<li>' + x + '</li>'; });
-      problemsHtml += '</ul>';
-
-      var usageHtml = '<ol>';
-      p.usage.forEach(function(x) { usageHtml += '<li>' + x + '</li>'; });
-      usageHtml += '</ol>';
-
-      var insightsHtml = '<ul>';
-      p.insights.forEach(function(x) { insightsHtml += '<li>' + x + '</li>'; });
-      insightsHtml += '</ul>';
-
-      var tagsHtml = '';
-      p.tags.forEach(function(t) { tagsHtml += '<span class="tag">' + t + '</span>'; });
-
-      card.innerHTML =
-        '<div class="rank-ribbon"></div>' +
-        '<div class="pc-header">' +
-          '<span class="icon"></span>' +
-          '<a class="repo-name" href="' + p.url + '" target="_blank">' + p.fullName + '</a>' +
-          '<span class="org">by ' + p.org + '</span>' +
-        '</div>' +
-        '<div class="pc-meta">' +
-          '<span><span class="lang-dot ' + p.langClass + '"></span> ' + p.lang + '</span>' +
-          '<span> ' + p.stars + '</span>' +
-          '<span> ' + p.forks + '</span>' +
-          '<span class="stars-today"> ' + p.starsToday + ' stars today</span>' +
-          '<span class="count-badge">' + (p.count > 1 ? ' · ' + p.count + '次上榜' : ' · 首次上榜') + '</span>' +
-        '</div>' +
-        '<div class="pc-desc">' + p.description + '</div>' +
-
-        '<div class="section-label"> \u89e3\u51b3\u4ec0\u4e48\u95ee\u9898</div>' +
-        '<div class="section-content">' + problemsHtml + '</div>' +
-
-        '<div class="section-label usage"> \u5982\u4f55\u4f7f\u7528</div>' +
-        '<div class="section-content">' + usageHtml + '</div>' +
-
-        '<div class="section-label insight"> \u4ea7\u54c1\u4ef7\u503c\u601d\u8def</div>' +
-        '<div class="section-content">' + insightsHtml + '</div>' +
-
-        '<div class="tags">' + tagsHtml + '</div>';
-
-      container.appendChild(card);
-    });
-  });
-})();
-
-</script>
-
-
+<script src="app.js"></script>
 </body>
 </html>

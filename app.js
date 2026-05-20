@@ -283,17 +283,25 @@ function toggleDay(btn) {
   var icon = btn.querySelector('.toggle-icon');
 
   if (isOpening) {
-    // Calculate full height
+    // Temporarily remove max-height to get real scrollHeight
+    dayBody.style.maxHeight = 'none';
+    var fullHeight = dayBody.scrollHeight;
     dayBody.classList.remove('collapsed');
-    dayBody.style.maxHeight = dayBody.scrollHeight + 'px';
-    dayBody.style.maxHeight = dayBody.scrollHeight + 'px'; // force reflow
+    // Set to 0 then to full height for animation
+    dayBody.style.maxHeight = '0px';
+    requestAnimationFrame(function() {
+      dayBody.style.maxHeight = fullHeight + 'px';
+    });
     icon.classList.add('open');
-    btn.innerHTML = '<span class="toggle-icon open">▾</span> 收起 (' + btn.textContent.replace(/.*\(/, '(').replace(/▾/g, '').trim() + ')';
+    btn.innerHTML = '<span class="toggle-icon open">▾</span> 收起';
   } else {
-    dayBody.classList.add('collapsed');
-    dayBody.style.maxHeight = '220px';
+    dayBody.style.maxHeight = dayBody.scrollHeight + 'px';
+    requestAnimationFrame(function() {
+      dayBody.classList.add('collapsed');
+      dayBody.style.maxHeight = '220px';
+    });
     icon.classList.remove('open');
-    btn.innerHTML = '<span class="toggle-icon">▾</span> 展开查看 (' + btn.textContent.replace(/.*\(/, '(').replace(/▾/g, '').trim() + ')';
+    btn.innerHTML = '<span class="toggle-icon">▾</span> 展开查看';
   }
 }
 

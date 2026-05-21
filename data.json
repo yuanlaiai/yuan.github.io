@@ -1,9 +1,211 @@
 {
-  "lastUpdated": "2026-05-21",
+  "lastUpdated": "2026-05-22",
   "days": [
     {
-      "date": "2026-05-21",
+      "date": "2026-05-22",
       "label": "今天",
+      "icon": "",
+      "projects": [
+        {
+          "rank": 1,
+          "owner": "anthropics",
+          "name": "claude-plugins-official",
+          "fullName": "anthropics / claude-plugins-official",
+          "org": "Anthropic",
+          "url": "https://github.com/anthropics/claude-plugins-official",
+          "lang": "Python",
+          "langClass": "py",
+          "stars": "22,337",
+          "forks": "2,640",
+          "starsToday": "891",
+          "count": 1,
+          "description": "Anthropic 官方 Claude Code 插件目录 —— 官方管理的优质 Claude Code 插件市场",
+          "problems": [
+            "<strong>找不到靠谱的 Claude Code 插件：</strong>Claude Code 生态快速增长，但插件来源分散在 GitHub 各处，质量参差不齐。Anthropic 官方出手——发布官方插件目录，所有插件经过审核，一个命令即可安装。",
+            "<strong>安装配置复杂：</strong>之前要手动配置 MCP 服务器、写 .mcp.json、管理依赖。现在 /plugin install {插件名}@claude-plugins-official 一键安装，/plugin > Discover 浏览发现。",
+            "<strong>没有统一的插件发现机制：</strong>社区插件藏在 GitHub 各个角落，用户无从知道有哪些可用插件。官方目录提供搜索、发现、安装一站式体验，覆盖 Anthropic 内部插件 + 第三方社区插件。"
+          ],
+          "usage": [
+            "在 Claude Code 中浏览发现插件：<code>/plugin > Discover</code>",
+            "一键安装插件：<pre><code>/plugin install {plugin-name}@claude-plugins-official</code></pre>",
+            "查看已安装的插件列表：<code>/plugin list</code>",
+            "GitHub 仓库浏览插件源码：<a href=\"https://github.com/anthropics/claude-plugins-official\" style=\"color:#58a6ff\">github.com/anthropics/claude-plugins-official</a>"
+          ],
+          "insights": [
+            "<strong>Claude Code 插件生态的 App Store：</strong>Anthropic 官方插件目录就像一个 App Store——审核准入、统一安装、版本管理。可以想象未来插件开发者提交插件到该目录，类似 iOS App Store 的经济模型。",
+            "<strong>企业 Agent 插件管理：</strong>企业版可以在此基础上做私有插件目录——只有经过 IT 部门审核的插件可用，确保安全合规，同时支持企业自研内部工具插件。",
+            "<strong>插件即 Agent 能力商店：</strong>Claude Code 插件本质上就是 Agent 的\"技能扩展\"。这个模式可以扩展到其他 AI Agent 平台（Cursor、Codex 等），形成跨平台的 Agent 插件经济。"
+          ],
+          "tags": [
+            "claude-code",
+            "plugin-marketplace",
+            "anthropic-official",
+            "one-click-install",
+            "MCP",
+            "Agent-extensions"
+          ]
+        },
+        {
+          "rank": 2,
+          "owner": "multica-ai",
+          "name": "andrej-karpathy-skills",
+          "fullName": "multica-ai / andrej-karpathy-skills",
+          "org": "Multica AI",
+          "url": "https://github.com/multica-ai/andrej-karpathy-skills",
+          "lang": "",
+          "langClass": "",
+          "stars": "143,098",
+          "forks": "14,669",
+          "starsToday": "2,590",
+          "count": 1,
+          "description": "一份 CLAUDE.md 文件让 Claude Code 脱胎换骨 —— 源自 Andrej Karpathy 对 LLM 编码痛点的深刻洞察",
+          "problems": [
+            "<strong>Claude Code 乱猜不确认：</strong>Karpathy 指出——AI Agent 会默认自己的假设是正确的，不检查、不确认、不追问、不暴露权衡。这套技能通过 Think Before Coding 原则强制 Agent 先推理再行动。",
+            "<strong>过度工程化：</strong>Agent 特别喜欢写复杂抽象——不需要的灵活性、不必要的配置化、100 行能解决的问题写成 1000 行。Simplicity First 原则让 Agent 只写刚好够用的代码。",
+            "<strong>误改不相关代码：</strong>Agent 经常顺手改掉旁边不该动的注释或代码块。Surgical Changes 原则要求 Agent 只动任务相关的代码行，其他保持原样。"
+          ],
+          "usage": [
+            "直接将 CLAUDE.md 放到项目根目录：<pre><code>curl -O https://raw.githubusercontent.com/multica-ai/andrej-karpathy-skills/main/CLAUDE.md</code></pre>",
+            "或安装为 Claude Code 插件：<code>/plugin install karpathy-guidelines</code>",
+            "支持 Cursor：将 CURSOR.md 放到项目 .cursor/rules/ 目录。",
+            "Agent 自动遵循四条原则：Think Before Coding → Simplicity First → Surgical Changes → Goal-Driven Execution"
+          ],
+          "insights": [
+            "<strong>AI Agent 行为配置的范式转变：</strong>143K star 证明——好的 Agent 行为指南是最大的刚需。可以做成 AI Agent 行为配置平台：不同人格/角色/场景的 CLAUDE.md 模板市场，像 WordPress 主题一样交易。",
+            "<strong>企业 Agent 行为管控：</strong>企业可以制定统一的行为规范 CLAUDE.md——哪些代码风格必须遵守、哪些安全规则不能绕过、哪些测试必须通过。每个开发者提交代码前，Agent 先自检再交付。",
+            "<strong>Karpathy 风格的 Agent 教育：</strong>用这个技能培训 AI 编码 Agent——像训练实习生一样教 Agent 如何思考、如何简化、如何安全地修改代码。Agent 通过技能文件\"上课\"，比任何微调都更灵活。"
+          ],
+          "tags": [
+            "karpathy",
+            "claude-code",
+            "coding-guidelines",
+            "think-before-coding",
+            "simplicity-first",
+            "cursor"
+          ]
+        },
+        {
+          "rank": 3,
+          "owner": "teng-lin",
+          "name": "notebooklm-py",
+          "fullName": "teng-lin / notebooklm-py",
+          "org": "teng-lin",
+          "url": "https://github.com/teng-lin/notebooklm-py",
+          "lang": "Python",
+          "langClass": "py",
+          "stars": "14,363",
+          "forks": "1,993",
+          "starsToday": "182",
+          "count": 1,
+          "description": "Google NotebookLM 的非官方 Python API 与 Agent 技能 —— Python、CLI、Claude Code 三合一访问 NotebookLM 全部能力",
+          "problems": [
+            "<strong>NotebookLM 没有公开 API：</strong>Google NotebookLM 只有 Web UI，想编程化使用无处下手。notebooklm-py 逆向工程实现完整 API，支持 Python、CLI 和 AI Agent 三种接入方式。",
+            "<strong>Agent 无法使用 NotebookLM：</strong>Claude Code / Codex 等 AI Agent 需要 NotebookLM 的强大能力（音频生成、深度研究、知识管理），但没 API 就没法集成。该库作为 MCP 技能让 Agent 直接调用。",
+            "<strong>Web UI 功能受限：</strong>NotebookLM Web 版不支持批量下载、不支持 Quiz/Flashcard 多种格式导出、不支持自动化研究管线。notebooklm-py 暴露了 Web UI 没有的隐藏功能。"
+          ],
+          "usage": [
+            "Python 安装：<pre><code>pip install notebooklm-py</code></pre>",
+            "CLI 使用：<pre><code>notebooklm create-notebook --title \"AI 研究综述\"</code></pre>",
+            "生成音频概览：<pre><code>notebooklm generate-audio --source source.pdf</code></pre>",
+            "在 Claude Code 中作为 MCP 技能导入，通过自然语言操控 NotebookLM 生成播客/视频/幻灯片等。"
+          ],
+          "insights": [
+            "<strong>封闭 AI 产品的 API 化服务：</strong>类似 notebooklm-py 的模式可复制到其他无 API 的 AI 产品（Perplexity、Gamma 等）——逆向工程提供 API 供开发者和 Agent 使用，按调用量收费。",
+            "<strong>自动化研究管线 SaaS：</strong>基于 NotebookLM 构建自动化研究管线——定时抓取论文/网页 → 自动导入 NotebookLM → 生成音频摘要/播客 → 推送到团队。面向科研团队、VC 分析师。",
+            "<strong>教育内容工厂：</strong>NotebookLM 的 Audio Overview（播客式摘要）是最受欢迎的功能。批量把课件/教材转成 AI 播客供学生通勤时听——知识付费+教育科技新方向。"
+          ],
+          "tags": [
+            "notebooklm",
+            "python-api",
+            "research-automation",
+            "audio-overview",
+            "MCP",
+            "google"
+          ]
+        },
+        {
+          "rank": 4,
+          "owner": "HKUDS",
+          "name": "CLI-Anything",
+          "fullName": "HKUDS / CLI-Anything",
+          "org": "HKU DS",
+          "url": "https://github.com/HKUDS/CLI-Anything",
+          "lang": "Python",
+          "langClass": "py",
+          "stars": "39,104",
+          "forks": "3,710",
+          "starsToday": "644",
+          "count": 3,
+          "description": "让所有软件都拥有 AI Agent 原生接口 —— CLI-Hub：为每款软件一键生成命令行接口，Agent 无需 GUI 直接操控",
+          "problems": [
+            "<strong>AI Agent 操控软件只能靠截图+模拟点击：</strong>大多数软件没有 CLI 也没 API，Agent 只能截图识别 GUI 元素再模拟点击——不稳定、慢、一换版就崩。CLI-Anything 为任意软件自动生成稳定高效的 CLI 接口。",
+            "<strong>Agent 工具定义碎片化：</strong>Claude Code 用 MCP、Cursor 用插件、OpenClaw 用工具——每个平台格式不同。CLI-Hub 统一标准，一次封装到处可用。",
+            "<strong>传统 RPA 太脆弱：</strong>Selenium、Playwright 等 UI 自动化测试工具依赖页面结构，前端一重构就全部失效。CLI 接口天然稳定，不依赖 UI 元素。"
+          ],
+          "usage": [
+            "安装 CLI-Anything Hub：<pre><code>pip install cli-anything-hub</code></pre>",
+            "安装社区已有的 CLI 封装：<pre><code>cli-hub install <name></code></pre>",
+            "为目标软件生成 CLI：<pre><code>cli-anything wrap <software-path></code></pre>",
+            "浏览已有封装的 CLI-Hub：<a href=\"https://clianything.cc/\" style=\"color:#58a6ff\">clianything.cc</a>"
+          ],
+          "insights": [
+            "<strong>企业软件 Agent 适配平台：</strong>CLI-Anything 解决 AI Agent 落地的核心难题——操作现有软件。可以做成 SaaS 平台：企业上传内部系统，平台自动生成 CLI 接口并持续维护，按软件数量收费。",
+            "<strong>Agent 软件适配市场：</strong>CLI-Hub 类似 npm 但面向 Agent 工具生态——开发者上传 CLI 封装，Agent 开发者下载使用。39K star 证明了需求的真实性。",
+            "<strong>遗留系统 Agent 化改造：</strong>银行、保险等行业有大量 COBOL/Java 老系统，没有现代 API。CLI-Anything 一键为这些老系统生成 Agent 接口，让 AI Agent 能操作任何年代的系统。"
+          ],
+          "tags": [
+            "agent-native",
+            "cli-hub",
+            "software-automation",
+            "MCP",
+            "tool-generation",
+            "39k-stars"
+          ]
+        },
+        {
+          "rank": 5,
+          "owner": "obra",
+          "name": "superpowers",
+          "fullName": "obra / superpowers",
+          "org": "obra",
+          "url": "https://github.com/obra/superpowers",
+          "lang": "Shell",
+          "langClass": "sh",
+          "stars": "201,473",
+          "forks": "17,947",
+          "starsToday": "1,572",
+          "count": 4,
+          "description": "全栈 AI 智能体技能框架与开发方法论 —— 200K+ star 证明这是最流行的 Agent 开发标准",
+          "problems": [
+            "<strong>AI Agent 开发没有标准方法论：</strong>每个人用 Cursor/Claude Code 的方式各不相同——有人问问题、有人直接写代码、有人拼 prompt。Superpowers 定义了从 Spec → Plan → 子 Agent 实现 → 自动审查的完整方法论。",
+            "<strong>Agent 技能文件没有统一格式：</strong>.claude/skills/ 里的 Markdown 文件格式各异，管理混乱。Superpowers 定义了标准化的技能文件格式和 CLI 管理工具。",
+            "<strong>多 Agent 协作混乱：</strong>前端 Agent、后端 Agent、测试 Agent 各自为政，缺乏协调框架。Superpowers 内置 Multi-Agent 编排——一个总 Agent 拆解任务，子 Agent 并行开发，自动合并。"
+          ],
+          "usage": [
+            "安装 Superpowers CLI：<pre><code>npx @agentic/superpowers</code></pre>",
+            "初始化项目技能：<pre><code>superpowers init</code></pre>",
+            "浏览可用技能库：<pre><code>superpowers list</code></pre>",
+            "安装特定技能到项目：<pre><code>superpowers install react-component</code></pre>"
+          ],
+          "insights": [
+            "<strong>Agent 开发方法论咨询：</strong>200K star 证明 Superpowers 定义了 Agent 开发的标准。可以做成企业培训+咨询产品——\"如何用 Superpowers 方法论构建 AI 原生开发团队\"。",
+            "<strong>技能文件模板市场：</strong>像 GitHub Marketplace 一样交易 Agent 技能文件——前端技能包、后端技能包、DevOps 技能包，每个 $5-50。企业采购版本确保安全审计。",
+            "<strong>企业 Agent 治理平台：</strong>企业版统一管理所有开发者的技能文件——强制更新、安全审查、使用统计，形成企业 AI 开发治理标准。"
+          ],
+          "tags": [
+            "agentic-framework",
+            "skills-file",
+            "multi-agent",
+            "development-methodology",
+            "claude-code",
+            "cursor"
+          ]
+        }
+      ]
+    },
+    {
+      "date": "2026-05-21",
+      "label": "昨天",
       "icon": "",
       "projects": [
         {
@@ -205,7 +407,7 @@
     },
     {
       "date": "2026-05-20",
-      "label": "昨天",
+      "label": "前天",
       "icon": "",
       "projects": [
         {
@@ -407,7 +609,7 @@
     },
     {
       "date": "2026-05-19",
-      "label": "前天",
+      "label": "3天前",
       "icon": "",
       "projects": [
         {
@@ -609,7 +811,7 @@
     },
     {
       "date": "2026-05-18",
-      "label": "3天前",
+      "label": "4天前",
       "icon": "",
       "projects": [
         {
@@ -811,7 +1013,7 @@
     },
     {
       "date": "2026-05-14",
-      "label": "7天前",
+      "label": "8天前",
       "icon": "",
       "projects": [
         {
@@ -1011,7 +1213,7 @@
     },
     {
       "date": "2026-05-13",
-      "label": "8天前",
+      "label": "9天前",
       "icon": "",
       "projects": [
         {
@@ -1207,7 +1409,7 @@
     },
     {
       "date": "2026-05-12",
-      "label": "9天前",
+      "label": "10天前",
       "icon": "",
       "projects": [
         {
